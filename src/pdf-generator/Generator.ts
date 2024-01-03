@@ -1,6 +1,6 @@
 import { text, image, barcodes } from "@pdfme/schemas";
 import { generate } from "@pdfme/generator";
-import { validateGoals } from "./Generator.mapper";
+import { validateGoals } from "./GeneratorUtils";
 
 export const Generator = (goals: string[]) => {
     validateGoals(goals);
