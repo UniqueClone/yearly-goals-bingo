@@ -26,11 +26,14 @@ jobs:
           npm install
           npm run build --if-present
 
+      - name: compress artifact
+        run: zip -r app-release.zip .
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: node-app
-          path: .
+          path: ./app-release.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -52,4 +55,4 @@ jobs:
           app-name: 'goals-bingo'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1D37BD03F9AE46E98B0108ABA7C9F03F }}
-          package: .
+          package: ./app-release.zip
