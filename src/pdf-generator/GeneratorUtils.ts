@@ -31,12 +31,12 @@ export const formatName = (name: string): string => {
     if (!name) {
         return '';
     } else if (name.length > 22) {
-        return name.substring(0, 22) + '...\'s';
-    } else if (name.endsWith("\'s") || name.endsWith("s\'")) {
+        return name.substring(0, 22) + "...'s";
+    } else if (name.endsWith("'s") || name.endsWith("s'")) {
         return name;
     } else if (name.endsWith("s")) {
-        return name + '\'';
+        return name + "'";
     } else {
-        return name + '\'s';
+        return name + "'s";
     }
 }
