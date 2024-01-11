@@ -28,7 +28,7 @@ body {
 }
 
 .input-container {
-    background-color: rgb(216, 112, 74);
+    background-color: teal;
     display: flex;
     flex-direction: row;
     align-items: center;
