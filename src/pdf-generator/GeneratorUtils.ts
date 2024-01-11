@@ -7,7 +7,7 @@ export const validateGoals = (goals: string[]) => {
 
 export const getDefaultGoals = (): string[] => {
     return [
-        "Goal 1 Test Longer than 1 line",
+        "Goal 1",
         "Goal 2",
         "Goal 3",
         "Goal 4",
@@ -24,4 +24,19 @@ export const getDefaultGoals = (): string[] => {
         "Goal 15",
         "Goal 16",
     ];
+}
+
+export const formatName = (name: string): string => {
+    name = name.trim();
+    if (!name) {
+        return '';
+    } else if (name.length > 22) {
+        return name.substring(0, 22) + '...\'s';
+    } else if (name.endsWith("\'s") || name.endsWith("s\'")) {
+        return name;
+    } else if (name.endsWith("s")) {
+        return name + '\'';
+    } else {
+        return name + '\'s';
+    }
 }

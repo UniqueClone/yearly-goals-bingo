@@ -4,6 +4,7 @@ import { Generator } from "./pdf-generator/Generator";
 import { getDefaultGoals } from "./pdf-generator/GeneratorUtils";
 
 function App() {
+    const [nameInput, setNameInput] = useState<string>("");
     const [goals, setGoals] = useState<string[]>(getDefaultGoals());
 
     const updateGoals = (event: any, goalIndex: number) => {
@@ -21,8 +22,20 @@ function App() {
 
                 <div className="goals-form">
                     <div className="input-container">
+                        <div className="input-label" id="namelabel">
+                            Name:
+                        </div>
+                        <input
+                            aria-labelledby="namelabel"
+                            id="name"
+                            placeholder="Name"
+                            type="text"
+                            onChange={(e) => setNameInput(e.target.value)}
+                        />
+                    </div>
+                    <div className="input-container">
                         <div className="input-label" id="goal1label">
-                            Goal 1:{" "}
+                            Goal 1:
                         </div>
                         <input
                             aria-labelledby="goal1label"
@@ -34,7 +47,7 @@ function App() {
                     </div>
                     <div className="input-container">
                         <div className="input-label" id="goal2label">
-                            Goal 2:{" "}
+                            Goal 2:
                         </div>
                         <input
                             aria-labelledby="goal2label"
@@ -48,7 +61,7 @@ function App() {
 
                     <div className="input-container">
                         <div className="input-label" id="goal3label">
-                            Goal 3:{" "}
+                            Goal 3:
                         </div>
                         <input
                             aria-labelledby="goal3label"
@@ -61,7 +74,7 @@ function App() {
 
                     <div className="input-container">
                         <div className="input-label" id="goal4label">
-                            Goal 4:{" "}
+                            Goal 4:
                         </div>
                         <input
                             aria-labelledby="goal4label"
@@ -74,7 +87,7 @@ function App() {
 
                     <div className="input-container">
                         <div className="input-label" id="goal5label">
-                            Goal 5:{" "}
+                            Goal 5:
                         </div>
                         <input
                             aria-labelledby="goal5label"
@@ -87,7 +100,7 @@ function App() {
 
                     <div className="input-container">
                         <div className="input-label" id="goal6label">
-                            Goal 6:{" "}
+                            Goal 6:
                         </div>
                         <input
                             aria-labelledby="goal6label"
@@ -100,7 +113,7 @@ function App() {
 
                     <div className="input-container">
                         <div className="input-label" id="goal7label">
-                            Goal 7:{" "}
+                            Goal 7:
                         </div>
                         <input
                             aria-labelledby="goal7label"
@@ -113,7 +126,7 @@ function App() {
 
                     <div className="input-container">
                         <div className="input-label" id="goal8label">
-                            Goal 8:{" "}
+                            Goal 8:
                         </div>
                         <input
                             aria-labelledby="goal8label"
@@ -126,7 +139,7 @@ function App() {
 
                     <div className="input-container">
                         <div className="input-label" id="goal9label">
-                            Goal 9:{" "}
+                            Goal 9:
                         </div>
                         <input
                             aria-labelledby="goal9label"
@@ -139,7 +152,7 @@ function App() {
 
                     <div className="input-container">
                         <div className="input-label" id="goal10label">
-                            Goal 10:{" "}
+                            Goal 10:
                         </div>
                         <input
                             aria-labelledby="goal10label"
@@ -152,7 +165,7 @@ function App() {
 
                     <div className="input-container">
                         <div className="input-label" id="goal11label">
-                            Goal 11:{" "}
+                            Goal 11:
                         </div>
                         <input
                             aria-labelledby="goal11label"
@@ -165,7 +178,7 @@ function App() {
 
                     <div className="input-container">
                         <div className="input-label" id="goal12label">
-                            Goal 12:{" "}
+                            Goal 12:
                         </div>
                         <input
                             aria-labelledby="goal12label"
@@ -178,7 +191,7 @@ function App() {
 
                     <div className="input-container">
                         <div className="input-label" id="goal13label">
-                            Goal 13:{" "}
+                            Goal 13:
                         </div>
                         <input
                             aria-labelledby="goal13label"
@@ -191,7 +204,7 @@ function App() {
 
                     <div className="input-container">
                         <div className="input-label" id="goal14label">
-                            Goal 14:{" "}
+                            Goal 14:
                         </div>
                         <input
                             aria-labelledby="goal14label"
@@ -204,7 +217,7 @@ function App() {
 
                     <div className="input-container">
                         <div className="input-label" id="goal15label">
-                            Goal 15:{" "}
+                            Goal 15:
                         </div>
                         <input
                             aria-labelledby="goal15label"
@@ -217,7 +230,7 @@ function App() {
 
                     <div className="input-container">
                         <div className="input-label" id="goal16label">
-                            Goal 16:{" "}
+                            Goal 16:
                         </div>
                         <input
                             aria-labelledby="goal16label"
@@ -230,19 +243,20 @@ function App() {
                     <button
                         title="Generate PDF"
                         type="submit"
-                        onClick={() => generatePDF(goals)}
+                        onClick={() => generatePDF(nameInput, goals)}
                     >
                         Generate PDF
                     </button>
                 </div>
+                <div id="container" />
             </body>
         </div>
     );
 }
 
-const generatePDF = (goals: string[]) => {
+const generatePDF = (name: string, goals: string[]) => {
     console.log("Generating PDF");
-    Generator(goals);
+    Generator(name, goals);
 };
 
 export default App;
