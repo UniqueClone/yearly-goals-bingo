@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import { Generator } from "./pdf-generator/Generator";
+// import { Form } from "./pdf-generator/Form";
 import { getDefaultGoals } from "./pdf-generator/GeneratorUtils";
 
 function App() {
@@ -14,25 +15,27 @@ function App() {
         setGoals(currentGoals);
     };
 
+    // Form();
+
     return (
         <div className="App">
             <body>
-                <h1>2024 Goals Bingo Generator!</h1>
+                <Introduction />
+                <div className="name-container">
+                    <div className="input-label" id="namelabel">
+                        Whose goals are these?
+                    </div>
+                    <input
+                        aria-labelledby="namelabel"
+                        id="name"
+                        placeholder="Name"
+                        type="text"
+                        onChange={(e) => setNameInput(e.target.value)}
+                    />
+                </div>
                 <h2>What are your goals for this year?</h2>
 
                 <div className="goals-form">
-                    <div className="input-container">
-                        <div className="input-label" id="namelabel">
-                            Name:
-                        </div>
-                        <input
-                            aria-labelledby="namelabel"
-                            id="name"
-                            placeholder="Name"
-                            type="text"
-                            onChange={(e) => setNameInput(e.target.value)}
-                        />
-                    </div>
                     <div className="input-container">
                         <div className="input-label" id="goal1label">
                             Goal 1:
@@ -240,15 +243,15 @@ function App() {
                             onChange={(e) => updateGoals(e, 15)}
                         />
                     </div>
-                    <button
-                        title="Generate PDF"
-                        type="submit"
-                        onClick={() => generatePDF(nameInput, goals)}
-                    >
-                        Generate PDF
-                    </button>
                 </div>
-                <div id="container" />
+                <button
+                    title="Generate PDF"
+                    type="submit"
+                    onClick={() => generatePDF(nameInput, goals)}
+                >
+                    Generate PDF
+                </button>
+                {/* <div id="container" /> */}
             </body>
         </div>
     );
@@ -257,6 +260,30 @@ function App() {
 const generatePDF = (name: string, goals: string[]) => {
     console.log("Generating PDF");
     Generator(name, goals);
+};
+
+const Introduction: React.FC = () => {
+    return (
+        <div>
+            <h1>2024 Goals Bingo Generator!</h1>
+            <h2>What is this?</h2>
+            <p>
+                This is a tool to help you generate a PDF of your goals for the
+                year 2024. You can use this to help you visualize your goals and
+                make them more real.
+            </p>
+            <p>
+                New Year's resolutions are often forgotten by the end of
+                January, and often because they are unrealistic and people set
+                an unrealistic number of goals. This tool is designed to help
+                you choose goals with a higher chance of success.{" "}
+            </p>
+            <p>
+                You do not aim to complete all of your goals, but rather to
+                complete a bingo line of goals. Good luck!
+            </p>
+        </div>
+    );
 };
 
 export default App;

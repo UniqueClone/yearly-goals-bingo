@@ -19,9 +19,32 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+p {
+    font-size: 1.5rem;
+    max-width: 80%;
+    display: inline-block;
+}
+
+.name-container {
+    display: inline flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#namelabel {
+    font-size: larger;
+    font-weight: bold;
+    margin: 1rem;
+}
+
 .goals-form {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
@@ -31,17 +54,17 @@ body {
     background-color: teal;
     display: flex;
     flex-direction: row;
+    flex-basis: 20rem;
     align-items: center;
     justify-content: center;
     margin: 10px;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
-    min-width: 10rem;
 }
 
 .input-label {
-    flex: 1;
+    /* flex: 1; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -51,7 +74,7 @@ body {
 
 input {
     display: flex;
-    flex: 2;
+    /* flex: 2; */
     /* 
     align-items: center; */
     margin: 10px;
