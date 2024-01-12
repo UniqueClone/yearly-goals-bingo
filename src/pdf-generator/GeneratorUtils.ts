@@ -55,3 +55,14 @@ export const formatName = (name: string): string => {
         return name + "'s";
     }
 }
+
+/**
+ * Shuffles array in place using the Fisher-Yates shuffle algorithm.
+ * @param goals An array containing the items.
+ */
+export const shuffleGoals = (goals: string[]): void => {
+    for (let i = goals.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [goals[i], goals[j]] = [goals[j], goals[i]];
+    }
+}

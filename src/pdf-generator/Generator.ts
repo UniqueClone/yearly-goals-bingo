@@ -1,10 +1,11 @@
 import { text, image, barcodes } from "@pdfme/schemas";
 import { generate } from "@pdfme/generator";
-import { formatName, validateGoals } from "./GeneratorUtils";
+import { formatName, shuffleGoals, validateGoals } from "./GeneratorUtils";
 
 export const Generator = (name: string, goals: string[]) => {
     name = formatName(name);
     validateGoals(goals);
+    shuffleGoals(goals);
 
 (async () => {
   const template = {
