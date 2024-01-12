@@ -1,3 +1,9 @@
+/**
+ * Validates the goals to be used in the PDF.
+ * Checkes if the goals are not null, empty or have a length different than 16.
+ * @param goals The goals to be validated.
+ * @returns The validated goals.
+ */
 export const validateGoals = (goals: string[]) => {
     if (!goals || !goals.length || goals.length !== 16) {
         throw new Error('Invalid goals, received goals: ' + goals);
@@ -5,6 +11,10 @@ export const validateGoals = (goals: string[]) => {
     return goals;
 }
 
+/**
+ * Gets the default goals.
+ * @returns The default goals.
+ */
 export const getDefaultGoals = (): string[] => {
     return [
         "Goal 1",
@@ -26,6 +36,11 @@ export const getDefaultGoals = (): string[] => {
     ];
 }
 
+/**
+ * Formats the name to be used in the PDF header.
+ * @param name The name to be formatted.
+ * @returns The formatted name.
+ */
 export const formatName = (name: string): string => {
     name = name.trim();
     if (!name) {
