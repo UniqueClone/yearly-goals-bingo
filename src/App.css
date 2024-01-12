@@ -82,6 +82,10 @@ input {
     min-width: 10rem;
 }
 
+input[type=text]:hover, input[type=text]:focus {
+    background-color: wheat;
+}
+
 button {
     margin: 10px;
     padding: 10px;
