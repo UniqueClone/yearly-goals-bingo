@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "./App.css";
 import { Generator } from "./pdf-generator/Generator";
-// import { Form } from "./pdf-generator/Form";
 import { getDefaultGoals } from "./pdf-generator/GeneratorUtils";
 
 function App() {
@@ -14,8 +13,6 @@ function App() {
         currentGoals[goalIndex] = event.target.value;
         setGoals(currentGoals);
     };
-
-    // Form();
 
     return (
         <div className="App">

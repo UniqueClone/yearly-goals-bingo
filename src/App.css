@@ -64,7 +64,6 @@ p {
 }
 
 .input-label {
-    /* flex: 1; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -74,7 +73,6 @@ p {
 
 input {
     display: flex;
-    /* flex: 2; */
     /* 
     align-items: center; */
     margin: 10px;
