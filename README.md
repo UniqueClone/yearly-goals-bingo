@@ -1,46 +1,34 @@
-# Getting Started with Create React App
+# yearly-goals-bingo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- [yearly-goals-bingo](#yearly-goals-bingo)
+  - [What is it?](#what-is-it)
+  - [How do I use it?](#how-do-i-use-it)
+  - [What does it look like?](#what-does-it-look-like)
 
-## Available Scripts
+## What is it?
 
-In the project directory, you can run:
+This is a tool to help you generate a PDF of your goals for the
+year 2024. You can use this to help you visualize your goals and
+make them more real.
 
-### `npm start`
+New Year's resolutions are often forgotten by the end of
+January, and often because they are unrealistic and people set
+an unrealistic number of goals. This tool is designed to help
+you choose goals with a higher chance of success.{" "}
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+You do not aim to complete all of your goals, but rather to
+complete a bingo line of goals. Good luck!
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## How do I use it?
 
-### `npm test`
+Go to the [website](https://goals-bingo.azurewebsites.net/) and
+fill in the form. The form consists of a field for your name,
+16 fields for your goals, and a final button to generate the
+PDF.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Your goals will be randomly shuffled and placed on a bingo
+card. You can then print the PDF and hang it on your wall.
 
-### `npm run build`
+## What does it look like?
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+![A screenshot of a PDF with the title "Ryan's 2024 Goals Bingo" and 16 randomly ordered placeholder goals.](image.png)

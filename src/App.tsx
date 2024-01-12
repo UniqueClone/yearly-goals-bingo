@@ -16,6 +16,9 @@ function App() {
 
     return (
         <div className="App">
+            <header>
+                <title>2024 Goals Bingo Generator</title>
+            </header>
             <body>
                 <Introduction />
                 <div className="name-container">
