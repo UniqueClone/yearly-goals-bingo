@@ -31,7 +31,7 @@ export const Generator = (name: string, goals: string[]) => {
         "fontName": "Roboto",
         "dynamicFontSize": {
           "min": 8,
-          "max": 28,
+          "max": 14,
           "fit": "vertical"
         }
       },
@@ -55,7 +55,7 @@ export const Generator = (name: string, goals: string[]) => {
         "fontName": "Roboto",
         "dynamicFontSize": {
           "min": 8,
-          "max": 28,
+          "max": 14,
           "fit": "vertical"
         }
       },
@@ -79,7 +79,7 @@ export const Generator = (name: string, goals: string[]) => {
         "fontName": "Roboto",
         "dynamicFontSize": {
           "min": 8,
-          "max": 28,
+          "max": 14,
           "fit": "vertical"
         }
       },
@@ -103,7 +103,7 @@ export const Generator = (name: string, goals: string[]) => {
         "fontName": "Roboto",
         "dynamicFontSize": {
           "min": 8,
-          "max": 28,
+          "max": 14,
           "fit": "vertical"
         }
       },
@@ -127,7 +127,7 @@ export const Generator = (name: string, goals: string[]) => {
         "fontName": "Roboto",
         "dynamicFontSize": {
           "min": 8,
-          "max": 28,
+          "max": 14,
           "fit": "vertical"
         }
       },
@@ -151,7 +151,7 @@ export const Generator = (name: string, goals: string[]) => {
         "fontName": "Roboto",
         "dynamicFontSize": {
           "min": 8,
-          "max": 28,
+          "max": 14,
           "fit": "vertical"
         }
       },
@@ -175,7 +175,7 @@ export const Generator = (name: string, goals: string[]) => {
         "fontName": "Roboto",
         "dynamicFontSize": {
           "min": 8,
-          "max": 28,
+          "max": 14,
           "fit": "vertical"
         }
       },
@@ -199,7 +199,7 @@ export const Generator = (name: string, goals: string[]) => {
         "fontName": "Roboto",
         "dynamicFontSize": {
           "min": 8,
-          "max": 28,
+          "max": 14,
           "fit": "vertical"
         }
       },
@@ -223,7 +223,7 @@ export const Generator = (name: string, goals: string[]) => {
         "fontName": "Roboto",
         "dynamicFontSize": {
           "min": 8,
-          "max": 28,
+          "max": 14,
           "fit": "vertical"
         }
       },
@@ -247,7 +247,7 @@ export const Generator = (name: string, goals: string[]) => {
         "fontName": "Roboto",
         "dynamicFontSize": {
           "min": 8,
-          "max": 28,
+          "max": 14,
           "fit": "vertical"
         }
       },
@@ -271,7 +271,7 @@ export const Generator = (name: string, goals: string[]) => {
         "fontName": "Roboto",
         "dynamicFontSize": {
           "min": 8,
-          "max": 28,
+          "max": 14,
           "fit": "vertical"
         }
       },
@@ -295,7 +295,7 @@ export const Generator = (name: string, goals: string[]) => {
         "fontName": "Roboto",
         "dynamicFontSize": {
           "min": 8,
-          "max": 28,
+          "max": 14,
           "fit": "vertical"
         }
       },
@@ -319,7 +319,7 @@ export const Generator = (name: string, goals: string[]) => {
         "fontName": "Roboto",
         "dynamicFontSize": {
           "min": 8,
-          "max": 28,
+          "max": 14,
           "fit": "vertical"
         }
       },
@@ -343,7 +343,7 @@ export const Generator = (name: string, goals: string[]) => {
         "fontName": "Roboto",
         "dynamicFontSize": {
           "min": 8,
-          "max": 28,
+          "max": 14,
           "fit": "vertical"
         }
       },
@@ -367,7 +367,7 @@ export const Generator = (name: string, goals: string[]) => {
         "fontName": "Roboto",
         "dynamicFontSize": {
           "min": 8,
-          "max": 28,
+          "max": 14,
           "fit": "vertical"
         }
       },
@@ -391,7 +391,7 @@ export const Generator = (name: string, goals: string[]) => {
         "fontName": "Roboto",
         "dynamicFontSize": {
           "min": 8,
-          "max": 28,
+          "max": 14,
           "fit": "vertical"
         }
       },
