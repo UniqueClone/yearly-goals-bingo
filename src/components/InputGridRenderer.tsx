@@ -4,8 +4,26 @@ import { useScreenSize } from "../useScreenSize";
 import { InputList } from "./InputList";
 
 export const InputGridRenderer: React.FC = () => {
-  const [values, setValues] = useState<string[]>(Array(25).fill(""));
-  //   const [showGrid, setShowGrid] = useState<boolean>(false);
+    const [name, setName] = useState<string>("");
+
+    const localStorageName = localStorage.getItem("name");
+    const localStorageValues = localStorage.getItem("values");
+
+    // Local Storage: Save the values to local storage when they change
+    React.useEffect(() => {
+        if (localStorageName) {
+            setName(localStorageName);
+        }
+        if (localStorageValues) {
+            setValues(JSON.parse(localStorageValues));
+        }
+    }, []);
+
+    // Local Storage: Update local storage when values change
+    React.useEffect(() => {
+        localStorage.setItem("values", JSON.stringify(values));
+        localStorage.setItem("name", name);
+    }, [values, name]);
 
   const handleChange = (index: number, value: string) => {
     const updatedValues = [...values];
