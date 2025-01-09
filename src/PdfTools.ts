@@ -12,6 +12,8 @@ export const CreatePdf = (config: PdfConfig, goals: string[]) => {
         // return;
     }
 
+    goals = goals.sort(() => Math.random() - 0.5);
+
     const name = config.name.endsWith("'s") ? config.name : `${config.name}'s`;
 
     // Default export is a4 paper, portrait, using millimeters for units
@@ -42,7 +44,12 @@ export const CreatePdf = (config: PdfConfig, goals: string[]) => {
 
         const x = 33 + (index % 5) * 36;
         const y = 92 + Math.floor(index / 5) * 42;
-        doc.text(goal, x, y, { align: "center", maxWidth: 30 }, "center");
+
+        if (goalLength < 20) {
+            doc.text(goal, x, y + 12, { align: "center", maxWidth: 30 }, "center");
+        } else {
+            doc.text(goal, x, y, { align: "center", maxWidth: 30 }, "center");
+        }
     });
 
     doc.save("a4.pdf");
