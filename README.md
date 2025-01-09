@@ -8,7 +8,7 @@
 ## What is it?
 
 This is a tool to help you generate a PDF of your goals for the
-year 2024. You can use this to help you visualize your goals and
+year 2025. You can use this to help you visualize your goals and
 make them more real.
 
 New Year's resolutions are often forgotten by the end of
@@ -31,4 +31,4 @@ card. You can then print the PDF and hang it on your wall.
 
 ## What does it look like?
 
-![A screenshot of a PDF with the title "Ryan's 2024 Goals Bingo" and 16 randomly ordered placeholder goals.](image.png)
+![A screenshot of a PDF with the title "Ryan's 2025 Goals Bingo" and 16 randomly ordered placeholder goals.](image.png)
