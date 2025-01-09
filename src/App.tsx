@@ -55,12 +55,12 @@ function App() {
                     What is your name? <br />
                     <input
                         style={{
-                            margin: "10px",
-                            padding: "5px",
-                            borderRadius: "5px",
+                            padding: "10px",
+                            margin: "10px 0",
+                            borderRadius: "4px",
                             border: "1px solid #ccc",
-                            fontSize: "1rem",
-                            justifyItems: "center",
+                            color: "#333",
+                            backgroundColor: "#f9f9f9",
                         }}
                         type="text"
                         value={name}
