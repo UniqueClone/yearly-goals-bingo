@@ -26,6 +26,7 @@ export const InputList: React.FC<InputListProps> = (props) => {
                             borderRadius: "4px",
                             border: "1px solid #ccc",
                             color: "#333",
+                            backgroundColor: "#f9f9f9",
                         }}
                         type="text"
                         value={value}
