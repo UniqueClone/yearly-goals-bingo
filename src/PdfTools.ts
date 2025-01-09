@@ -14,7 +14,11 @@ export const CreatePdf = (config: PdfConfig, goals: string[]) => {
 
     goals = goals.sort(() => Math.random() - 0.5);
 
-    const name = config.name.endsWith("'s") ? config.name : `${config.name}'s`;
+    let name = config.name;
+
+    if (name !== "") {
+        name = config.name.endsWith("'s") ? config.name : `${config.name}'s`;
+    }
 
     // Default export is a4 paper, portrait, using millimeters for units
     const doc = new jsPDF({
@@ -30,7 +34,7 @@ export const CreatePdf = (config: PdfConfig, goals: string[]) => {
     doc.setFont("helvetica", "bold");
     doc.text(name, 105, 35, { align: "center" }, "center");
     doc.setFontSize(15);
-
+    doc.setFont("helvetica", "normal");
 
     goals.forEach((goal, index) => {
         const goalLength = goal.length;
@@ -46,11 +50,17 @@ export const CreatePdf = (config: PdfConfig, goals: string[]) => {
         const y = 92 + Math.floor(index / 5) * 42;
 
         if (goalLength < 20) {
-            doc.text(goal, x, y + 12, { align: "center", maxWidth: 30 }, "center");
+            doc.text(
+                goal,
+                x,
+                y + 12,
+                { align: "center", maxWidth: 30 },
+                "center"
+            );
         } else {
             doc.text(goal, x, y, { align: "center", maxWidth: 30 }, "center");
         }
     });
 
-    doc.save("a4.pdf");
+    doc.save(`${config.name}'s Goals.pdf`);
 };
