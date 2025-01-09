@@ -9,10 +9,9 @@ interface PdfConfig {
 export const CreatePdf = (config: PdfConfig, goals: string[]) => {
     if (goals.length === 0) {
         alert("You need to set some goals first!");
-        // return;
     }
 
-    goals = goals.sort(() => Math.random() - 0.5);
+    const shuffledGoals = goals.sort(() => Math.random() - 0.5);
 
     let name = config.name;
 
@@ -36,7 +35,7 @@ export const CreatePdf = (config: PdfConfig, goals: string[]) => {
     doc.setFontSize(15);
     doc.setFont("helvetica", "normal");
 
-    goals.forEach((goal, index) => {
+    shuffledGoals.forEach((goal, index) => {
         const goalLength = goal.length;
         let fontSize = 15;
         doc.setFontSize(fontSize);
@@ -49,17 +48,7 @@ export const CreatePdf = (config: PdfConfig, goals: string[]) => {
         const x = 33 + (index % 5) * 36;
         const y = 92 + Math.floor(index / 5) * 42;
 
-        if (goalLength < 20) {
-            doc.text(
-                goal,
-                x,
-                y + 12,
-                { align: "center", maxWidth: 30 },
-                "center"
-            );
-        } else {
-            doc.text(goal, x, y, { align: "center", maxWidth: 30 }, "center");
-        }
+        doc.text(goal, x, y, { align: "center", maxWidth: 30 }, "center");
     });
 
     doc.save(`${config.name}'s Goals.pdf`);
