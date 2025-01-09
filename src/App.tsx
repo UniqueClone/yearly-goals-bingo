@@ -4,10 +4,8 @@ import { CreatePdf } from "./PdfTools";
 import { InputGridRenderer } from "./InputGridRenderer";
 
 function App() {
-    const [name, setName] = useState<string>("Ryan");
-    const [goals, setGoals] = useState<string[]>(
-        Array(25).fill("1234567890asdfghjklzxcvbnmqwertyuiop")
-    );
+    const [name, setName] = useState<string>("");
+    const [goals, setGoals] = useState<string[]>(Array(25).fill(""));
     const [canCreatePdf, setCanCreatePdf] = useState<boolean>(true);
     const year = new Date().getFullYear();
 
