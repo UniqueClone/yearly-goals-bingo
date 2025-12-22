@@ -112,6 +112,21 @@
     color: #4b5563;
 }
 
+.app-footer {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+.app-footer__link {
+    color: #2563eb;
+    font-weight: 500;
+}
+
+.app-footer__link:hover {
+    text-decoration: underline;
+}
+
 @media (max-width: 600px) {
     .app-hero__title {
         font-size: 2.1rem;

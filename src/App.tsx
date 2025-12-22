@@ -192,6 +192,19 @@ function App() {
                             {!canCreatePdf &&
                                 " Shorten any goals over 80 characters to enable the button."}
                         </p>
+                        <p className={styles["app-footer"]}>
+                            If this tool helped you, you can support it at
+                            {" "}
+                            <a
+                                href="https://buymeacoffee.com/ryanlynch"
+                                target="_blank"
+                                rel="noreferrer"
+                                className={styles["app-footer__link"]}
+                            >
+                                buymeacoffee.com/ryanlynch
+                            </a>
+                            .
+                        </p>
                     </div>
                 </section>
             </main>
