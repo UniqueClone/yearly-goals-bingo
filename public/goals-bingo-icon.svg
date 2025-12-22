@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Yearly Goals Bingo</title>
+  <desc id="desc">Icon of a 5 by 5 bingo grid with a highlighted center square and a star, representing yearly goals bingo.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded background -->
+  <rect x="4" y="4" width="56" height="56" rx="12" fill="url(#bg)"/>
+
+  <!-- Bingo grid -->
+  <g transform="translate(10 10)" stroke="#f9fafb" stroke-width="1.5" fill="none">
+    <rect x="0" y="0" width="44" height="44" rx="4"/>
+    <!-- Vertical lines -->
+    <path d="M8.8 0v44M17.6 0v44M26.4 0v44M35.2 0v44"/>
+    <!-- Horizontal lines -->
+    <path d="M0 8.8h44M0 17.6h44M0 26.4h44M0 35.2h44"/>
+  </g>
+
+  <!-- Highlighted center goal -->
+  <rect x="26" y="26" width="12" height="12" rx="2" fill="#f97316" stroke="#fbbf24" stroke-width="1.5"/>
+
+  <!-- Star in center cell -->
+  <path d="M32 28.4l1.15 2.34 2.58.38-1.87 1.82.44 2.57L32 34.4l-2.3 1.21.44-2.57-1.87-1.82 2.58-.38z" fill="#fef9c3"/>
+
+  <!-- Subtle year dots -->
+  <g fill="#e5f0ff" opacity="0.85">
+    <circle cx="14.5" cy="15" r="1.1"/>
+    <circle cx="23" cy="15" r="1.1"/>
+    <circle cx="32" cy="15" r="1.1"/>
+    <circle cx="40.5" cy="15" r="1.1"/>
+  </g>
+</svg>
