@@ -36,5 +36,8 @@ export default defineConfig({
         // Inline static assets (like the full-page PNG background) as data URLs
         // so jsPDF doesn't need to fetch them over the network.
         assetsInlineLimit: 10_000_000,
+        // Allow a larger chunk size before Vite warns. The PDF generation
+        // chunk is intentionally big because it contains an inlined A4 PNG.
+        chunkSizeWarningLimit: 1500,
     },
 });

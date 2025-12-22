@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRegisterSW } from "virtual:pwa-register/react";
 import styles from "./App.module.css";
-import { CreatePdf } from "./PdfTools";
 import { InputGridRenderer } from "./InputGridRenderer";
 
 function PwaUpdateToast() {
@@ -69,6 +68,15 @@ function App() {
         }
     }, []);
 
+    // Local Storage: Persist values whenever they change
+    useEffect(() => {
+        localStorage.setItem("name", name);
+    }, [name]);
+
+    useEffect(() => {
+        localStorage.setItem("values", JSON.stringify(goals));
+    }, [goals]);
+
     const pdfConfig = {
         year: year.toString(),
         name: name,
@@ -99,6 +107,14 @@ function App() {
             }
         }
         return true;
+    };
+
+    // PDF Generation
+    // Dynamically import the PDF generation code only when needed to
+    // keep the initial bundle size smaller.
+    const handleCreatePdf = async () => {
+        const { CreatePdf } = await import("./PdfTools");
+        CreatePdf(pdfConfig, goals);
     };
 
     return (
@@ -163,7 +179,7 @@ function App() {
                     <div className={styles["app-panel__action"]}>
                         <button
                             disabled={!canCreatePdf}
-                            onClick={() => CreatePdf(pdfConfig, goals)}
+                            onClick={handleCreatePdf}
                             className={`button ${styles["app-create-button"]}`}
                             id="create-pdf"
                         >
