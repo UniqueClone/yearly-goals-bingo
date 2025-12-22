@@ -204,6 +204,27 @@ function App() {
                                 buymeacoffee.com/ryanlynch
                             </a>
                             .
+                            <br />
+                            For feedback or suggestions, email
+                            {" "}
+                            <a
+                                href="mailto:ryanjetbox@gmail.com"
+                                className={styles["app-footer__link"]}
+                            >
+                                ryanjetbox@gmail.com
+                            </a>
+                            {" "}
+                            or open an issue on
+                            {" "}
+                            <a
+                                href="https://github.com/UniqueClone/yearly-goals-bingo/issues/new"
+                                target="_blank"
+                                rel="noreferrer"
+                                className={styles["app-footer__link"]}
+                            >
+                                GitHub
+                            </a>
+                            .
                         </p>
                     </div>
                 </section>
