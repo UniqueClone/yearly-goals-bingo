@@ -1,4 +1,5 @@
-import React, { useRef, useEffect, useState } from "react";
+import React from "react";
+import styles from "./InputTable.module.css";
 
 interface InputTableProps {
     values: string[];
@@ -7,82 +8,122 @@ interface InputTableProps {
 
 export const InputTable: React.FC<InputTableProps> = ({ values, onChange }) => {
     const gridSize = 5;
-    const [currentValues, setCurrentValues] = useState([...values]);
-    const cellsRefs = useRef<(HTMLTableCellElement | null)[]>([]);
 
     const tooLongClass = (value: string) => {
         return value.length > 80 ? "too-long" : "";
     };
 
-    const handleInput = (
-        e: React.FormEvent<HTMLTableCellElement>,
-        index: number
-    ) => {
-        const newValues = [...currentValues];
-        newValues[index] = (e.target as HTMLTableCellElement).innerText;
-        setCurrentValues(newValues);
-    };
-
-    const handleBlur = (index: number) => {
-        onChange(index, currentValues[index]);
-    };
-
-    useEffect(() => {
-        setCurrentValues([...values]);
-    }, [values]);
-
     return (
-        <table
-            style={{
-                borderCollapse: "collapse",
-                minWidth: "600px",
-                maxWidth: "90vw",
-                margin: "0 auto",
-                backgroundColor: "#f9f9f9",
-                // boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-                borderRadius: "4px",
-                overflow: "hidden",
-            }}
-        >
-            <tbody>
-                {Array.from({ length: gridSize }).map((_, rowIndex) => (
-                    <tr key={rowIndex}>
-                        {Array.from({ length: gridSize }).map((_, colIndex) => {
-                            const index = rowIndex * gridSize + colIndex;
-                            return (
-                                <td
-                                    ref={(el) =>
-                                        (cellsRefs.current[index] = el)
+        <section className={styles["desktop-bingo"]}>
+            <header className={styles["desktop-bingo__header"]}>
+                <h3 className={styles["desktop-bingo__title"]}>Bingo grid</h3>
+                <p className={styles["desktop-bingo__subtitle"]}>
+                    Type directly into each square. Keep goals short so they
+                    print clearly.
+                </p>
+            </header>
+            <div className={styles["desktop-bingo__card"]}>
+                <div className={styles["desktop-bingo__ribbon"]}>B I N G O</div>
+                <table className={styles["desktop-bingo__table"]}>
+                    <caption className="sr-only">
+                        Bingo goals grid. Fill in 24 goals around the free
+                        center space in the middle.
+                    </caption>
+                    <tbody>
+                        {Array.from({ length: gridSize }).map((_, rowIndex) => (
+                            <tr key={rowIndex}>
+                                {Array.from({ length: gridSize }).map(
+                                    (_, colIndex) => {
+                                        const index =
+                                            rowIndex * gridSize + colIndex;
+                                        const value = values[index] ?? "";
+                                        const isTooLong = value.length > 80;
+                                        const isCenter = index === 12;
+                                        const cellClasses = [
+                                            styles["desktop-bingo__cell"],
+                                            tooLongClass(value),
+                                            isCenter
+                                                ? styles[
+                                                      "desktop-bingo__cell--center"
+                                                  ]
+                                                : "",
+                                        ]
+                                            .filter(Boolean)
+                                            .join(" ");
+
+                                        if (isCenter) {
+                                            return (
+                                                <td
+                                                    className={cellClasses}
+                                                    key={colIndex}
+                                                >
+                                                    <div
+                                                        className={
+                                                            styles[
+                                                                "desktop-bingo__free"
+                                                            ]
+                                                        }
+                                                    >
+                                                        <span
+                                                            className={
+                                                                styles[
+                                                                    "desktop-bingo__free-label"
+                                                                ]
+                                                            }
+                                                        >
+                                                            FREE
+                                                        </span>
+                                                        <span
+                                                            className={
+                                                                styles[
+                                                                    "desktop-bingo__free-sub"
+                                                                ]
+                                                            }
+                                                        >
+                                                            center space
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                            );
+                                        }
+
+                                        return (
+                                            <td
+                                                className={cellClasses}
+                                                key={colIndex}
+                                            >
+                                                <textarea
+                                                    aria-label={`Goal ${
+                                                        index + 1
+                                                    }`}
+                                                    className={
+                                                        styles[
+                                                            "desktop-bingo__input"
+                                                        ]
+                                                    }
+                                                    value={value}
+                                                    rows={3}
+                                                    maxLength={160}
+                                                    dir="ltr"
+                                                    aria-invalid={
+                                                        isTooLong || undefined
+                                                    }
+                                                    onChange={(e) =>
+                                                        onChange(
+                                                            index,
+                                                            e.target.value
+                                                        )
+                                                    }
+                                                />
+                                            </td>
+                                        );
                                     }
-                                    className={tooLongClass(
-                                        currentValues[index]
-                                    )}
-                                    key={colIndex}
-                                    style={{
-                                        border: "2px solid #ccc",
-                                        outline: "1px solid #888",
-                                        color: "#333",
-                                        padding: "10px",
-                                        minWidth: "100px",
-                                        maxWidth: "150px",
-                                        maxHeight: "200px",
-                                        wordWrap: "break-word",
-                                        backgroundColor: "#fff",
-                                        textAlign: "center",
-                                        verticalAlign: "middle",
-                                    }}
-                                    contentEditable={true}
-                                    suppressContentEditableWarning={true}
-                                    onInput={(e) => handleInput(e, index)}
-                                    onBlur={() => handleBlur(index)}
-                                >
-                                    {values[index]}
-                                </td>
-                            );
-                        })}
-                    </tr>
-                ))}
-            </tbody>
-        </table>
+                                )}
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        </section>
     );
 };

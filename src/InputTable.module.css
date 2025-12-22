@@ -1,0 +1,122 @@
+/* Desktop bingo grid */
+.desktop-bingo {
+    width: 100%;
+    max-width: 900px;
+    margin: 1.5rem auto 0;
+}
+
+.desktop-bingo__header {
+    margin-bottom: 1.75rem;
+}
+
+.desktop-bingo__title {
+    margin: 0 0 0.25rem;
+    font-size: 1.4rem;
+}
+
+.desktop-bingo__subtitle {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #374151;
+}
+
+.desktop-bingo__card {
+    position: relative;
+    border-radius: 14px;
+    padding: 1.1rem 1.2rem 1.2rem;
+    background: radial-gradient(
+        circle at top,
+        #ffffff 0,
+        #f1f5f9 55%,
+        #e2e8f0 100%
+    );
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.15);
+}
+
+.desktop-bingo__ribbon {
+    position: absolute;
+    left: 50%;
+    top: -0.9rem;
+    transform: translateX(-50%);
+    padding: 0.25rem 1.8rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #2563eb, #10b981);
+    color: #f9fafb;
+    font-weight: 700;
+    letter-spacing: 0.4em;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.desktop-bingo__table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.desktop-bingo__cell {
+    border: 2px solid #cbd5e1;
+    padding: 0;
+    height: 96px;
+    vertical-align: middle;
+    background-color: #ffffff;
+}
+
+.desktop-bingo__cell:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: -3px;
+}
+
+.desktop-bingo__cell--center {
+    background: linear-gradient(135deg, #f97316, #fbbf24);
+    color: #111827;
+    font-weight: 700;
+}
+
+.desktop-bingo__free {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.desktop-bingo__free-label {
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.desktop-bingo__free-sub {
+    font-size: 0.7rem;
+    opacity: 0.9;
+}
+
+.desktop-bingo__input {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 0.5rem 0.55rem;
+    background: transparent;
+    resize: none;
+    text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    color: #111827;
+    font-size: 0.9rem;
+    font-family: inherit;
+    box-sizing: border-box;
+    direction: ltr;
+    unicode-bidi: plaintext;
+}
+
+.desktop-bingo__cell--center .desktop-bingo__input {
+    font-weight: 700;
+}
+
+.desktop-bingo__input:focus {
+    outline: 3px solid #2563eb;
+    outline-offset: -3px;
+}
