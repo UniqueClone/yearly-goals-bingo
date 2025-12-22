@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./App.css";
+import styles from "./App.module.css";
 import { CreatePdf } from "./PdfTools";
 import { InputGridRenderer } from "./InputGridRenderer";
 
@@ -8,6 +8,20 @@ function App() {
     const [goals, setGoals] = useState<string[]>(Array(25).fill(""));
     const [canCreatePdf, setCanCreatePdf] = useState<boolean>(true);
     const year = new Date().getFullYear();
+
+    // Local Storage: Initialize the values from local storage on first render
+    useEffect(() => {
+        const storedName = localStorage.getItem("name");
+        const storedValues = localStorage.getItem("values");
+
+        if (storedName) {
+            setName(storedName);
+        }
+        if (storedValues) {
+            const parsed = JSON.parse(storedValues) as string[];
+            setGoals(parsed);
+        }
+    }, []);
 
     const pdfConfig = {
         year: year.toString(),
@@ -42,51 +56,80 @@ function App() {
     };
 
     return (
-        <>
-            <h1>Yearly Goals Bingo {year}</h1>
-            <div className="card">
-                <label
-                    style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                    }}
-                >
-                    What is your name? <br />
+        <main className={styles["app-shell"]}>
+            <header className={styles["app-hero"]}>
+                <h1 className={styles["app-hero__title"]}>
+                    Yearly Goals Bingo {year}
+                </h1>
+                <p className={styles["app-hero__subtitle"]}>
+                    Turn your goals for the year into a playful bingo card you
+                    can print and keep somewhere you&apos;ll see every day.
+                </p>
+            </header>
+
+            <section
+                className={`${styles["app-panel"]} ${styles["app-panel--name"]}`}
+            >
+                <h2 className={styles["app-panel__title"]}>
+                    Start with your name
+                </h2>
+                <p className={styles["app-panel__body"]} id="name-help">
+                    We&apos;ll add it to the top of your bingo card so it feels
+                    personal and fun to complete.
+                </p>
+                <div className={styles["app-name-input"]}>
+                    <label
+                        className={styles["app-name-input__label"]}
+                        htmlFor="name"
+                    >
+                        Name
+                    </label>
                     <input
-                        style={{
-                            padding: "10px",
-                            margin: "10px 0",
-                            borderRadius: "4px",
-                            border: "1px solid #ccc",
-                            color: "#333",
-                            backgroundColor: "#f9f9f9",
-                        }}
+                        id="name"
+                        className={styles["app-name-input__field"]}
                         type="text"
+                        autoComplete="name"
+                        placeholder="e.g. Alex, The Lynch Family, Team Alpha"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
+                        aria-describedby="name-help"
                     />
-                </label>
-            </div>
-            <InputGridRenderer
-                name={name}
-                setName={setName}
-                goals={goals}
-                handleGoalChange={handleGoalChange}
-                setAllGoals={setGoals}
-            />
-            <div className="card">
-                <button
-                    disabled={!canCreatePdf}
-                    onClick={() => CreatePdf(pdfConfig, goals)}
-                    className="button"
-                    id="create-pdf"
-                >
-                    Create PDF
-                </button>
-                <p>Click the button to create a PDF with your bingo card!</p>
-            </div>
-        </>
+                </div>
+            </section>
+
+            <section
+                className={`${styles["app-panel"]} ${styles["app-panel--goals"]}`}
+            >
+                <InputGridRenderer
+                    name={name}
+                    setName={setName}
+                    goals={goals}
+                    handleGoalChange={handleGoalChange}
+                    setAllGoals={setGoals}
+                />
+            </section>
+
+            <section
+                className={`${styles["app-panel"]} ${styles["app-panel--action"]}`}
+            >
+                <div className={styles["app-panel__action"]}>
+                    <button
+                        disabled={!canCreatePdf}
+                        onClick={() => CreatePdf(pdfConfig, goals)}
+                        className={`button ${styles["app-create-button"]}`}
+                        id="create-pdf"
+                    >
+                        Create my bingo PDF
+                    </button>
+                    <p className={styles["app-panel__hint"]}>
+                        You can update your goals any time. When you&apos;re
+                        happy with them, generate a fresh PDF and print it out.
+                        {!canCreatePdf &&
+                            " Shorten any goals over 80 characters to enable the button."}
+                    </p>
+                </div>
+            </section>
+        </main>
     );
 }
 

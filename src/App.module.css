@@ -1,0 +1,119 @@
+/* App shell & layout */
+.app-shell {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+
+.app-hero {
+    text-align: center;
+}
+
+.app-hero__title {
+    margin: 0 0 0.25rem;
+    font-size: 2.5rem;
+}
+
+.app-hero__subtitle {
+    margin: 0 auto;
+    max-width: 40rem;
+    font-size: 1rem;
+    color: #374151;
+}
+
+.app-panel {
+    background-color: rgba(255, 255, 255, 0.96);
+    border-radius: 12px;
+    padding: 1.25rem 1.3rem 1.35rem;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
+}
+
+.app-panel--name {
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.app-panel--goals {
+    background-color: transparent;
+    box-shadow: none;
+    padding: 0;
+}
+
+.app-panel--action {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.app-panel__title {
+    margin: 0 0 0.25rem;
+    font-size: 1.2rem;
+}
+
+.app-panel__body {
+    margin: 0 0 0.75rem;
+    font-size: 0.95rem;
+    color: #4b5563;
+}
+
+.app-name-input {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.35rem;
+}
+
+.app-name-input__label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #111827;
+}
+
+.app-name-input__field {
+    padding: 0.6rem 0.75rem;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    background-color: #f9fafb;
+    color: #111827;
+    font-size: 0.95rem;
+    font-family: inherit;
+}
+
+.app-name-input__field:focus {
+    outline: 2px solid #2563eb;
+    outline-offset: 1px;
+    border-color: #2563eb;
+    background-color: #ffffff;
+}
+
+.app-panel__action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.app-create-button {
+    padding-inline: 2.5rem;
+    background: linear-gradient(135deg, #2563eb, #10b981);
+    border-radius: 999px;
+    border-color: transparent;
+    color: #f9fafb;
+}
+
+.app-create-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.app-panel__hint {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #4b5563;
+}
+
+@media (max-width: 600px) {
+    .app-hero__title {
+        font-size: 2.1rem;
+    }
+}
