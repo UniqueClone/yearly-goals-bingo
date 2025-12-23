@@ -1,9 +1,9 @@
 # yearly-goals-bingo
 
-- [yearly-goals-bingo](#yearly-goals-bingo)
-  - [What is it?](#what-is-it)
-  - [How do I use it?](#how-do-i-use-it)
-  - [What does it look like?](#what-does-it-look-like)
+-   [yearly-goals-bingo](#yearly-goals-bingo)
+    -   [What is it?](#what-is-it)
+    -   [How do I use it?](#how-do-i-use-it)
+    -   [What does it look like?](#what-does-it-look-like)
 
 ## What is it?
 
@@ -21,14 +21,14 @@ complete a bingo line of goals. Good luck!
 
 ## How do I use it?
 
-Go to the [website](https://goals-bingo.azurewebsites.net/) and
-fill in the form. The form consists of a field for your name,
-16 fields for your goals, and a final button to generate the
-PDF.
+Go to the live site at <https://goals-bingo.vercel.app/> and fill in the
+form. The form consists of a field for your name, 24 fields for your goals
+(`Free Square!` is automatically used for the center square), and a final button to
+generate the PDF.
 
-Your goals will be randomly shuffled and placed on a bingo
-card. You can then print the PDF and hang it on your wall.
+Your goals will be randomly shuffled and placed on a bingo card. You can then
+print the PDF and hang it on your wall or save it for later.
 
 ## What does it look like?
 
-![A screenshot of a PDF with the title "Ryan's 2025 Goals Bingo" and 16 randomly ordered placeholder goals.](image.png)
+![A screenshot of a PDF with the title "Ryan's 2026 Goals Bingo" and 24 randomly ordered placeholder goals with a "Free Square!" in the center square.](src/assets/2026%20Goals.png)
