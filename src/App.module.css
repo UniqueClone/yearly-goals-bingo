@@ -127,6 +127,35 @@
     text-decoration: underline;
 }
 
+.app-cta-strip {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    color: #4b5563;
+}
+
+.app-cta-strip__label {
+    margin-right: 0.15rem;
+}
+
+.app-cta-strip__button {
+    border-radius: 999px;
+    border: 1px solid #d1d5db;
+    padding: 0.25rem 0.75rem;
+    background-color: #f9fafb;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.app-cta-strip__button:hover {
+    border-color: #2563eb;
+    background-color: #eff6ff;
+}
+
 @media (max-width: 600px) {
     .app-hero__title {
         font-size: 2.1rem;

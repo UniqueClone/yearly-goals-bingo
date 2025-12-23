@@ -3,6 +3,15 @@ import { useRegisterSW } from "virtual:pwa-register/react";
 import styles from "./App.module.css";
 import { InputGridRenderer } from "./InputGridRenderer";
 
+interface BeforeInstallPromptEvent extends Event {
+    readonly platforms: string[];
+    readonly userChoice: Promise<{
+        outcome: "accepted" | "dismissed";
+        platform: string;
+    }>;
+    prompt: () => Promise<void>;
+}
+
 function PwaUpdateToast() {
     const {
         offlineReady: [offlineReady, setOfflineReady],
@@ -44,6 +53,127 @@ function PwaUpdateToast() {
                     Dismiss
                 </button>
             </div>
+        </div>
+    );
+}
+
+function InstallShareStrip() {
+    const [installEvent, setInstallEvent] =
+        useState<BeforeInstallPromptEvent | null>(null);
+    const [canInstall, setCanInstall] = useState(false);
+    const [installDismissed, setInstallDismissed] = useState(false);
+    const [canShare, setCanShare] = useState(false);
+    const [copyStatus, setCopyStatus] = useState<"idle" | "copied">("idle");
+    const [isIOS, setIsIOS] = useState(false);
+
+    useEffect(() => {
+        const handler = (event: Event) => {
+            event.preventDefault();
+            setInstallEvent(event as BeforeInstallPromptEvent);
+            setCanInstall(true);
+        };
+
+        window.addEventListener("beforeinstallprompt", handler);
+        return () => window.removeEventListener("beforeinstallprompt", handler);
+    }, []);
+
+    useEffect(() => {
+        if (typeof navigator !== "undefined" && "share" in navigator) {
+            setCanShare(true);
+        }
+    }, []);
+
+    useEffect(() => {
+        if (typeof navigator !== "undefined") {
+            const ua = navigator.userAgent || navigator.vendor || "";
+            if (/iphone|ipad|ipod/i.test(ua)) {
+                setIsIOS(true);
+            }
+        }
+    }, []);
+
+    const handleInstall = async () => {
+        if (!installEvent) return;
+
+        try {
+            await installEvent.prompt();
+            const choice = await installEvent.userChoice;
+            if (choice.outcome === "accepted") {
+                setCanInstall(false);
+            } else {
+                setInstallDismissed(true);
+            }
+        } catch {
+            setInstallDismissed(true);
+        } finally {
+            setInstallEvent(null);
+        }
+    };
+
+    const handleShareOrCopy = async () => {
+        const url = window.location.href;
+
+        if (canShare && "share" in navigator) {
+            try {
+                await (
+                    navigator as Navigator & {
+                        share?: (data: ShareData) => Promise<void>;
+                    }
+                ).share?.({
+                    title: "Yearly Goals Bingo",
+                    text: "Turn your yearly goals into a bingo card.",
+                    url,
+                });
+                return;
+            } catch {
+                // fall through to copy
+            }
+        }
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            try {
+                await navigator.clipboard.writeText(url);
+                setCopyStatus("copied");
+                setTimeout(() => setCopyStatus("idle"), 2000);
+            } catch {
+                // ignore copy failures
+            }
+        }
+    };
+
+    const showInstallButton = canInstall && !installDismissed;
+
+    return (
+        <div className={styles["app-cta-strip"]}>
+            <span className={styles["app-cta-strip__label"]}>
+                Keep this handy:
+            </span>
+            {showInstallButton && (
+                <button
+                    type="button"
+                    className={styles["app-cta-strip__button"]}
+                    onClick={handleInstall}
+                >
+                    Install app
+                </button>
+            )}
+            <button
+                type="button"
+                className={styles["app-cta-strip__button"]}
+                onClick={handleShareOrCopy}
+            >
+                {copyStatus === "copied"
+                    ? "Link copied"
+                    : canShare
+                    ? "Share link"
+                    : "Copy link"}
+            </button>
+            {!showInstallButton && isIOS && (
+                <span className={styles["app-cta-strip__label"]}>
+                    On iPhone or iPad, use Safari&apos;s Share button and choose
+                    &quot;Add to Home Screen&quot; to install.
+                </span>
+            )}
         </div>
     );
 }
@@ -193,8 +323,7 @@ function App() {
                                 " Shorten any goals over 80 characters to enable the button."}
                         </p>
                         <p className={styles["app-footer"]}>
-                            If this tool helped you, you can support it at
-                            {" "}
+                            If this tool helped you, you can support it at{" "}
                             <a
                                 href="https://buymeacoffee.com/ryanlynch"
                                 target="_blank"
@@ -205,17 +334,14 @@ function App() {
                             </a>
                             .
                             <br />
-                            For feedback or suggestions, email
-                            {" "}
+                            For feedback or suggestions, email{" "}
                             <a
                                 href="mailto:ryanjetbox@gmail.com"
                                 className={styles["app-footer__link"]}
                             >
                                 ryanjetbox@gmail.com
-                            </a>
-                            {" "}
-                            or open an issue on
-                            {" "}
+                            </a>{" "}
+                            or open an issue on{" "}
                             <a
                                 href="https://github.com/UniqueClone/yearly-goals-bingo/issues/new"
                                 target="_blank"
@@ -226,6 +352,7 @@ function App() {
                             </a>
                             .
                         </p>
+                        <InstallShareStrip />
                     </div>
                 </section>
             </main>
