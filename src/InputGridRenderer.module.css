@@ -42,6 +42,36 @@
     min-width: 0;
 }
 
+.goals-layout__presets {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+}
+
+.goals-layout__presets-label {
+    font-size: x-large;
+    color: #374151;
+}
+
+.goals-layout__preset-button {
+    border-radius: 999px;
+    border: 1px solid #d1d5db;
+    padding: 0.25rem 0.7rem;
+    background-color: #f9fafb;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.goals-layout__preset-button:hover {
+    border-color: #2563eb;
+    background-color: #eff6ff;
+}
+
 @media (min-width: 936px) {
     .goals-layout {
         grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.35fr);
