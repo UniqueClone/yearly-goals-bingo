@@ -52,4 +52,4 @@ jobs:
                   app-name: goals-bingo
                   slot-name: Production
                   publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1D37BD03F9AE46E98B0108ABA7C9F03F }}
-                  package: .
+                  package: ./dist
